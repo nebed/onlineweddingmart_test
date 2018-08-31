@@ -161,7 +161,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   height: 38px;
   bottom: 0px;
   right: 40px;
-  background-color: #717fe0;
+  background-color: #93278f;
   opacity: 0.5;
   justify-content: center;
   align-items: center;
@@ -440,7 +440,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*---------------------------------------------*/
 .main-menu > li:hover > a {
   text-decoration: none;
-  color: #6c7ae0;
+  color: #ed1c24;
 }
 
 .main-menu > li:hover > .sub-menu {
@@ -2004,6 +2004,15 @@ input.num-product::-webkit-inner-spin-button {
   transform: scaleX(0);
 }
 
+.block1-txt-child3 {
+  overflow: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+}
+
 .block1-link {
   -webkit-transform: translateY(250%);
   -moz-transform: translateY(250%);
@@ -2017,7 +2026,15 @@ input.num-product::-webkit-inner-spin-button {
   background-color: rgba(146,39,143,0.8);
 }
 
-.block1-txt:hover .block1-txt-child2 {
+.block1-txt:hover .block1-txt-child2  {
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.block1-txt:hover .block1-txt-child3  {
   -webkit-transform: scaleX(1);
   -moz-transform: scaleX(1);
   -ms-transform: scaleX(1);
@@ -3102,7 +3119,7 @@ input.num-product::-webkit-inner-spin-button {
 .hov-btn2:hover {
   border-color: #fff;
   background-color: #fff;
-  color: #717fe0;
+  color: #93278f;
 }
 
 /*---------------------------------------------*/
