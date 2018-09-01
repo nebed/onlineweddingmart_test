@@ -91,8 +91,8 @@
         [ Slick2 ]*/
         $('.wrap-slick2').each(function(){
             $(this).find('.slick2').slick({
-              slidesToShow: 4,
-              slidesToScroll: 4,
+              slidesToShow: 3,
+              slidesToScroll: 3,
               infinite: false,
               autoplay: false,
               autoplaySpeed: 6000,
@@ -104,8 +104,8 @@
                 {
                   breakpoint: 1200,
                   settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4
+                    slidesToShow: 3,
+                    slidesToScroll: 3
                   }
                 },
                 {

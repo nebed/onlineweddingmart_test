@@ -482,8 +482,8 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                 </h3>
                 <p class="stext-110 txt-center cl5 respon2">Photographers, venues, makeup artists & more at your budget & style.</p>
             </div>
-            <div class="row">
-                <div class="col-md-6 p-b-30 m-lr-auto">
+            <div class="flex-w flex-c-m">
+                <div class="size-202 m-lr-auto respon4">
                     <!-- Block1 -->
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-04.jpg" alt="IMG-BANNER">
@@ -504,7 +504,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     </div>
                 </div>
 
-                <div class="col-md-6 p-b-30 m-lr-auto">
+                <div class="size-202 m-lr-auto respon4">
                     <!-- Block1 -->
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-05.jpg" alt="IMG-BANNER">
@@ -525,7 +525,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
+                <div class="size-202 m-lr-auto respon4">
                     <!-- Block1 -->
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-07.jpg" alt="IMG-BANNER">
@@ -546,7 +546,29 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
+
+                <div class="size-202 m-lr-auto respon4">
+                    <!-- Block1 -->
+                    <div class="block1 wrap-pic-w">
+                        <img src="images/banner-13.jpg" alt="IMG-BANNER">
+
+                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8">
+                                    Wedding Cakes
+                                </span>
+                            </div>
+
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    View All
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="size-202 m-lr-auto respon4">
                     <!-- Block1 -->
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-08.jpg" alt="IMG-BANNER">
@@ -567,7 +589,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
+                <div class="size-202 m-lr-auto respon4">
                     <!-- Block1 -->
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-09.jpg" alt="IMG-BANNER">
@@ -588,7 +610,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     </div>
                 </div>
             </div>
-            <div class="flex-c-m flex-w w-full respon3">
+            <div class="p-t-9 flex-c-m flex-w w-full respon3">
                 <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn1 p-lr-15 trans-04">
                     Browse All Categories
                 </a>
@@ -676,9 +698,9 @@ Find the best wedding vendors with thousands of trusted reviews</p>
     <!--Hire Us End -->
 
 
+    <!--Blog Slides-->
 
-    <!-- Blog -->
-    <section class="sec-blog bg0 p-t-30 p-b-35">
+    <section class="sec-product bg0 p-t-30 p-b-35">
         <div class="container">
             <div class="p-b-32">
                 <h3 class="ltext-107 cl5 txt-center respon2">
@@ -687,60 +709,21 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                 <p class="stext-110 txt-center cl5 respon2">Spicy Gist from people that have been in your shoes + professional advice from experienced planners</p>
             </div>
 
-            <div class="row">
-                <div class="col-sm-6 col-md-4 p-b-40">
-                    <div class="blog-item">
-                        <div class="hov-img0">
-                            <a href="blog-detail.html">
-                                <img src="images/blog-01.jpg" alt="IMG-BLOG">
-                            </a>
-                        </div>
+                <!-- Tab panes -->
+                <div class="tab-content p-t-9">
+                    <!-- - -->
+                    <div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+                        <!-- Slide2 -->
+                        <div class="wrap-slick2">
+                            <div class="slick2">
+                                <div class="item-slick2 col-sm-6 col-md-4 p-b-40">
+                                    <!-- Block2 -->
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="images/blog-02.jpg" alt="IMG-PRODUCT">
+                                        </div>
 
-                        <div class="p-t-15">
-                            <div class="stext-107 flex-w p-b-14">
-                                <span class="m-r-3">
-                                    <span class="cl4">
-                                        By
-                                    </span>
-
-                                    <span class="cl5">
-                                        Somto Ezife
-                                    </span>
-                                </span>
-
-                                <span>
-                                    <span class="cl4">
-                                        on
-                                    </span>
-
-                                    <span class="cl5">
-                                        August 30, 2018 
-                                    </span>
-                                </span>
-                            </div>
-
-                            <h4 class="p-b-12">
-                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-                                    8 Inspiring Ways to Wear Dresses in the Winter
-                                </a>
-                            </h4>
-
-                            <p class="stext-108 cl6">
-                                Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-4 p-b-40">
-                    <div class="blog-item">
-                        <div class="hov-img0">
-                            <a href="blog-detail.html">
-                                <img src="images/blog-02.jpg" alt="IMG-BLOG">
-                            </a>
-                        </div>
-
-                        <div class="p-t-15">
+                                        <div class="p-t-15">
                             <div class="stext-107 flex-w p-b-14">
                                 <span class="m-r-3">
                                     <span class="cl4">
@@ -773,18 +756,17 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                                 Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
                             </p>
                         </div>
-                    </div>
-                </div>
+                                    </div>
+                                </div>
 
-                <div class="col-sm-6 col-md-4 p-b-40">
-                    <div class="blog-item">
-                        <div class="hov-img0">
-                            <a href="blog-detail.html">
-                                <img src="images/blog-03.jpg" alt="IMG-BLOG">
-                            </a>
-                        </div>
+                                <div class="item-slick2 col-sm-6 col-md-4 p-b-40">
+                                    <!-- Block2 -->
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="images/blog-01.jpg" alt="IMG-PRODUCT">
+                                        </div>
 
-                        <div class="p-t-15">
+                                        <div class="p-t-15">
                             <div class="stext-107 flex-w p-b-14">
                                 <span class="m-r-3">
                                     <span class="cl4">
@@ -802,31 +784,86 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                                     </span>
 
                                     <span class="cl5">
-                                       August 30, 2018 
+                                        August 30, 2018 
                                     </span>
                                 </span>
                             </div>
 
                             <h4 class="p-b-12">
                                 <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-                                    5 Winter-to-Spring Fashion Trends to Try Now
+                                    8 Inspiring Ways to Wear Dresses in the Winter
                                 </a>
                             </h4>
 
                             <p class="stext-108 cl6">
-                                Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
+                                Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
                             </p>
+                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="item-slick2 col-sm-6 col-md-4 p-b-40">
+                                    <!-- Block2 -->
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="images/blog-03.jpg" alt="IMG-PRODUCT">
+
+                                            
+                                        </div>
+
+                                        <div class="p-t-15">
+                            <div class="stext-107 flex-w p-b-14">
+                                <span class="m-r-3">
+                                    <span class="cl4">
+                                        By
+                                    </span>
+
+                                    <span class="cl5">
+                                        Somto Ezife
+                                    </span>
+                                </span>
+
+                                <span>
+                                    <span class="cl4">
+                                        on
+                                    </span>
+
+                                    <span class="cl5">
+                                        August 30, 2018
+                                    </span>
+                                </span>
+                            </div>
+
+                            <h4 class="p-b-12">
+                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
+                                    The Great Big List of Men’s Gifts for the Holidays
+                                </a>
+                            </h4>
+
+                            <p class="stext-108 cl6">
+                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+                            </p>
+                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                         </div>
                     </div>
                 </div>
+
                 <div class="flex-c-m flex-w w-full respon3">
                 <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn1 p-lr-15 trans-04">
                     Read The Blog
                 </a>
             </div>
-            </div>
         </div>
     </section>
+
+    <!-- Blog Slides End-->
 
 
     <!-- Footer -->
