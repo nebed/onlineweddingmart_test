@@ -41,6 +41,65 @@
 
     <body class="animsition">
     
+    <!--Modal Login-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4">
+                      Hello
+                  </div>
+                  <div class="col-md-8">
+                      {!! Form::open() !!}
+                <div class="form-group">
+                    {{Form::label('name','Your Name:')}}
+                {{Form::text('name',null,['class'=>'form-control'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('email','Your Email:')}}
+                {{Form::email('email',null,['class'=>'form-control'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('brand_name','Brand Name:')}}
+                {{Form::email('brand_name',null,['class'=>'form-control'])}}
+                </div>
+                {{ Form::label('service_id','Category:') }}
+                  <select class="form-control" name="service_id">
+                    
+                    @foreach($services as $service)
+                    <option value='{{$service->id}}'>{{$service->name}}</option>
+                    @endforeach
+
+                  </select>
+                  {{ Form::label('location_id','City:') }}
+                  <select class="form-control" name="city_id">
+                    
+                    @foreach($locations as $location)
+                    <option value='{{$location->id}}'>{{$location->name}}</option>
+                    @endforeach
+
+                  </select>
+                <div class="form-group">
+                    {{Form::label('password','Your Password:')}}
+                {{Form::password('password',['class'=>'form-control'])}}
+                </div>
+                <div class="form-group">
+                    {{Form::label('password_confirmation','Confirm Password:')}}
+                {{Form::password('password_confirmation',['class'=>'form-control'])}}
+                </div>
+                {{Form::submit('Register',['class'=>'submit btn btn-primary form-control c10'])}}
+
+                {!! Form::close() !!}
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
     <!-- Header -->
     <header class="header-v3">
         <!-- Header desktop -->
@@ -56,8 +115,8 @@
                             Help & FAQs
                         </a>
 
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            My Account
+                        <a href="#" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            Login
                         </a>
 
                         <a href="#" class="flex-c-m trans-04 p-lr-25">

@@ -15,6 +15,7 @@ Route::group(['middleware' => ['web']], function(){
 	Route::get('/contact', 'PagesController@getContact');
 	Route::post('/contact', 'PagesController@postContact');
 	Route::get('/about', 'PagesController@getAbout');
-	Route::get('/home', 'PagesController@getHome');
-	Route::get('/', 'PagesController@getHome');
+	Route::get('/home', 'PagesController@getIndex');
+	Route::get('/vendors', 'VendorController@getIndex');
+	Route::get('/', 'PagesController@getIndex');
 });

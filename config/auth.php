@@ -18,6 +18,8 @@ return [
         'passwords' => 'users',
     ],
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -45,6 +47,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'vendor' => [
+            'driver' => 'session',
+            'provider' => 'vendors',
+        ],
     ],
 
     /*
@@ -68,6 +75,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'vendors' => [
+            'driver' => 'eloquent',
+            'model' => App\Vendor::class,
         ],
 
         // 'users' => [
@@ -98,6 +110,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'email' => 'auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'vendors' => [
+            'provider' => 'vendors',
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
