@@ -7,32 +7,32 @@
 <!--===============================================================================================-->  
     <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
-   {!! Html::style('vendor/bootstrap/css/bootstrap.min.css')!!}
+   {!! Html::style('/vendor/bootstrap/css/bootstrap.min.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('fonts/font-awesome-4.7.0/css/font-awesome.min.css')!!}
+   {!!Html::style('/fonts/font-awesome-4.7.0/css/font-awesome.min.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('fonts/iconic/css/material-design-iconic-font.min.css')!!}
+   {!!Html::style('/fonts/iconic/css/material-design-iconic-font.min.css')!!}
 <!--===============================================================================================-->
-    {!!Html::style('fonts/linearicons-v1.0.0/icon-font.min.css')!!}
+    {!!Html::style('/fonts/linearicons-v1.0.0/icon-font.min.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('vendor/animate/animate.css')!!}
+   {!!Html::style('/vendor/animate/animate.css')!!}
 <!--===============================================================================================-->  
-   {!!Html::style('vendor/css-hamburgers/hamburgers.min.css')!!}
+   {!!Html::style('/vendor/css-hamburgers/hamburgers.min.css')!!}
 <!--===============================================================================================-->
-    {!!Html::style('vendor/animsition/css/animsition.min.css')!!}
+    {!!Html::style('/vendor/animsition/css/animsition.min.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('vendor/select2/select2.min.css')!!}
+   {!!Html::style('/vendor/select2/select2.min.css')!!}
 <!--===============================================================================================-->  
-   {!!Html::style('vendor/daterangepicker/daterangepicker.css')!!}
+   {!!Html::style('/vendor/daterangepicker/daterangepicker.css')!!}
 <!--===============================================================================================-->
-    {!!Html::style('vendor/slick/slick.css')!!}
+    {!!Html::style('/vendor/slick/slick.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('vendor/MagnificPopup/magnific-popup.css')!!}
+   {!!Html::style('/vendor/MagnificPopup/magnific-popup.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('vendor/perfect-scrollbar/perfect-scrollbar.css')!!}
+   {!!Html::style('/vendor/perfect-scrollbar/perfect-scrollbar.css')!!}
 <!--===============================================================================================-->
-    {!!Html::style('css/util.css')!!}
-{!!Html::style('css/main.css')!!}
+    {!!Html::style('/css/util.css')!!}
+{!!Html::style('/css/main.css')!!}
 <!--===============================================================================================-->
 </head>
   <body class="animsition">

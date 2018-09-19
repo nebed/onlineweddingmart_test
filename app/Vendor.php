@@ -19,7 +19,7 @@ class Vendor extends Authenticatable
      */
 
     protected $fillable = [
-        'name', 'email', 'password', 'service_id', 'location_id'
+        'name', 'email', 'password', 'service_id', 'location_id','brand_name', 'slug',
     ];
 
     /**

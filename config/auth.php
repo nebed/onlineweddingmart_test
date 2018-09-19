@@ -110,16 +110,14 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],
 
         'vendors' => [
             'provider' => 'vendors',
-            'email' => 'auth.emails.password',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 30,
         ],
     ],
 

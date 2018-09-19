@@ -19,6 +19,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    protected $guard = 'vendor';
 
     /**
      * Where to redirect users after login.

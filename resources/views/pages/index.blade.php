@@ -7,44 +7,49 @@
 <!--===============================================================================================-->  
     <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
-   {!! Html::style('vendor/bootstrap/css/bootstrap.min.css')!!}
+   <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
-   {!!Html::style('fonts/font-awesome-4.7.0/css/font-awesome.min.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')!!}">
 <!--===============================================================================================-->
-   {!!Html::style('fonts/iconic/css/material-design-iconic-font.min.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('fonts/iconic/css/material-design-iconic-font.min.css')!!}">
 <!--===============================================================================================-->
-    {!!Html::style('fonts/linearicons-v1.0.0/icon-font.min.css')!!}
+    <link rel="stylesheet" href="{!!URL::asset('fonts/linearicons-v1.0.0/icon-font.min.css')!!}">
 <!--===============================================================================================-->
-   {!!Html::style('vendor/animate/animate.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/animate/animate.css')!!}">
 <!--===============================================================================================-->  
-   {!!Html::style('vendor/css-hamburgers/hamburgers.min.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/css-hamburgers/hamburgers.min.css')!!}">
 <!--===============================================================================================-->
-    {!!Html::style('vendor/animsition/css/animsition.min.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/animsition/css/animsition.min.css')!!}">
 <!--===============================================================================================-->
-   {!!Html::style('vendor/select2/select2.min.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/select2/select2.min.css')!!}">
 <!--===============================================================================================-->  
-   {!!Html::style('vendor/daterangepicker/daterangepicker.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/daterangepicker/daterangepicker.css')!!}">
 <!--===============================================================================================-->
-    {!!Html::style('vendor/slick/slick.css')!!}
+    <link rel="stylesheet" href="{!!URL::asset('vendor/slick/slick.css')!!}">
 <!--===============================================================================================-->
-   {!!Html::style('vendor/MagnificPopup/magnific-popup.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/MagnificPopup/magnific-popup.css')!!}">
 <!--===============================================================================================-->
-   {!!Html::style('vendor/perfect-scrollbar/perfect-scrollbar.css')!!}
+   <link rel="stylesheet" href="{!!URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.css')!!}">
 <!--===============================================================================================-->
-    {!!Html::style('css/util.css')!!}
-{!!Html::style('css/main.css')!!}
+    <link rel="stylesheet" href="{!!URL::asset('css/util.css')!!}">
+<link rel="stylesheet" href="{!!URL::asset('css/main.css')!!}">
 <!--===============================================================================================-->
 </head>
 
-<body>
+<!--<body>-->
 
 
     <body class="animsition">
     
-    <!--Modal Login-->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <!--Modal Vendor Register-->
+    <div class="modal fade bd-example-modal-lg" id="modal-vendor-register" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
         <div class="modal-body">
             <div class="container-fluid">
                 <div class="row">
@@ -52,46 +57,100 @@
                       Hello
                   </div>
                   <div class="col-md-8">
-                      {!! Form::open() !!}
-                <div class="form-group">
-                    {{Form::label('name','Your Name:')}}
-                {{Form::text('name',null,['class'=>'form-control'])}}
-                </div>
-                <div class="form-group">
-                    {{Form::label('email','Your Email:')}}
-                {{Form::email('email',null,['class'=>'form-control'])}}
-                </div>
-                <div class="form-group">
-                    {{Form::label('brand_name','Brand Name:')}}
-                {{Form::email('brand_name',null,['class'=>'form-control'])}}
-                </div>
-                {{ Form::label('service_id','Category:') }}
+                    <div class="txt-center">
+                        <h3>"Grow Your Business with OWM"</h3>
+                        <h5>Sign Up to access your Dasboard</h5>
+                    </div>
+                    <br>
+                    @if($errors)
+                   <p> {!! $errors->first() !!}</p>
+                   @endif
+                      {!! Form::open(['route'=>'vendor.register']) !!}
+                      {{ csrf_field() }}
+                {{Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Your Name*' ])}}
+                <small id="emailHelp" class="form-text text-danger mb-1">Required*</small>
+                {{Form::email('email',null,['class'=>'form-control', 'placeholder'=>'Your Email*'])}}
+                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::text('brand_name',null,['class'=>'form-control', 'placeholder'=>'Brand Name*'])}}
+                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
                   <select class="form-control" name="service_id">
-                    
+                    <option value=''>Select Vendor Type*</option>
                     @foreach($services as $service)
                     <option value='{{$service->id}}'>{{$service->name}}</option>
                     @endforeach
 
                   </select>
-                  {{ Form::label('location_id','City:') }}
-                  <select class="form-control" name="city_id">
-                    
+                  <small id="emailHelp" class="form-text text-danger mb-1">Required*</small>
+                  <select class="form-control" name="location_id">
+                    <option value=''>City (choose your base city here)*</option>
                     @foreach($locations as $location)
                     <option value='{{$location->id}}'>{{$location->name}}</option>
                     @endforeach
 
                   </select>
-                <div class="form-group">
-                    {{Form::label('password','Your Password:')}}
-                {{Form::password('password',['class'=>'form-control'])}}
-                </div>
-                <div class="form-group">
-                    {{Form::label('password_confirmation','Confirm Password:')}}
-                {{Form::password('password_confirmation',['class'=>'form-control'])}}
-                </div>
-                {{Form::submit('Register',['class'=>'submit btn btn-primary form-control c10'])}}
+                  <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::password('password',['class'=>'form-control','placeholder'=>'Password*'])}}
+               <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::password('password_confirmation',['class'=>'form-control', 'placeholder'=>'Confirm Password*'])}}
+                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::submit('Sign Up',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
 
                 {!! Form::close() !!}
+                <div class="txt-center mt-5">
+                        <p>Already have an Accout? <a>Sign In</a>
+                 </div>
+
+                 <div class="">
+                    <a href="#" id="launch-vendor-login" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".vendorlogin">
+                            Vendor Login
+                        </a>
+                 </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Vendor Login -->
+    <div class="modal fade vendorlogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4">
+                      Hello
+                  </div>
+                  <div class="col-md-8">
+                    <div class="txt-center">
+                        <h3>"Grow Your Business with OWM"</h3>
+                        <h5>Sign In to access your Dasboard</h5>
+                    </div>
+                    <br>
+                    @if($errors)
+                   <p> {!! $errors->first() !!}</p>
+                   @endif
+                      {!! Form::open(['route'=>'vendor.login']) !!}
+                      {{ csrf_field() }}
+                {{Form::email('email',null,['class'=>'form-control mb-1', 'placeholder'=>'Your Email*'])}}
+                {{Form::password('password',['class'=>'form-control mb-1','placeholder'=>'Password*'])}}
+                {{Form::submit('Sign In',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
+
+                {!! Form::close() !!}
+                <div class="text-right mt-5">
+                 </div>
+
+                 <div class="">
+                 </div>
+                 
                   </div>
                 </div>
             </div>
@@ -134,7 +193,7 @@
                     
                     <!-- Logo desktop -->       
                     <a href="#" class="logo">
-                        <img src="images/icons/logo-02.png" alt="IMG-LOGO">
+                        <img src={{URL::asset("images/icons/logo-02.png")}} alt="IMG-LOGO">
                     </a>
 
                     <!-- Menu desktop -->
@@ -176,7 +235,14 @@
                     </div>  
 
                     <!-- Icon header -->
-                    <div class="wrap-icon-header flex-w flex-r-m h-full">                           
+                    <div class="wrap-icon-header flex-w flex-r-m h-full">
+
+                        <div class="flex-c-m h-full p-r-25 bor6">
+                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
+                            </div>
+                        </div>
+
                         <div class="flex-c-m h-full p-r-25 bor6">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
                                 <i class="zmdi zmdi-shopping-cart"></i>
@@ -197,14 +263,14 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->        
             <div class="logo-mobile">
-                <a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+                <a href="index.html"><img src={{URL::asset("images/icons/logo-01.png")}} alt="IMG-LOGO"></a>
             </div>
 
             <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-5">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                    <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                        <a class="btn mtext-104 cl0 size-40 bg1 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
                     </div>
                 </div>
             </div>
@@ -1233,14 +1299,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-    {!!Html::script('vendor/jquery/jquery-3.2.1.min.js')!!}
+    <script src="{!!URL::asset('vendor/jquery/jquery-3.2.1.min.js')!!}"></script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/animsition/js/animsition.min.js')!!}
+    <script src="{!!URL::asset('vendor/animsition/js/animsition.min.js')!!}"></script>
 <!--===============================================================================================-->
-   {!!Html::script('vendor/bootstrap/js/popper.js')!!}
-  {!!Html::script('vendor/bootstrap/js/bootstrap.min.js')!!}
+   <script src="{!!URL::asset('vendor/bootstrap/js/popper.js')!!}"></script>
+  <script src="{!!URL::asset('vendor/bootstrap/js/bootstrap.min.js')!!}"></script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/select2/select2.min.js')!!}
+    <script src="{!!URL::asset('vendor/select2/select2.min.js')!!}"></script>
     <script>
         $(".js-select2").each(function(){
             $(this).select2({
@@ -1250,19 +1316,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         })
     </script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/daterangepicker/moment.min.js')!!}
-    {!!Html::script('vendor/daterangepicker/daterangepicker.js')!!}
+    <script src="{!!URL::asset('vendor/daterangepicker/moment.min.js')!!}"></script>
+    <script src="{!!URL::asset('vendor/daterangepicker/daterangepicker.js')!!}"></script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/slick/slick.min.js')!!}
-    {!!Html::script('js/slick-custom.js')!!}
+    <script src="{!!URL::asset('vendor/slick/slick.min.js')!!}"></script>
+    <script src="{!!URL::asset('js/slick-custom.js')!!}"></script>
 <!--===============================================================================================-->
     <script src=portstaf"></script>  wetin de eloper sirve 
     <script>
         $('.parallax100').parallax100();
     </script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/MagnificPopup/jquery.magnific-popup.min.js')!!}
+    <script src="{!!URL::asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')!!}"></script>
     <script>
+        $('#launch-vendor-login').click(function(){
+            $('#modal-vendor-register').modal('hide');
+        });
+
         $('.gallery-lb').each(function() { // the containers for all your galleries
             $(this).magnificPopup({
                 delegate: 'a', // the selector for gallery item
@@ -1275,9 +1345,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         });
     </script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/isotope/isotope.pkgd.min.js')!!}
+    <script src="{!!URL::asset('vendor/isotope/isotope.pkgd.min.js')!!}"></script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/sweetalert/sweetalert.min.js')!!}
+    <script src="{!!URL::asset('vendor/sweetalert/sweetalert.min.js')!!}"></script>
     <script>
         $('.js-addwish-b2').on('click', function(e){
             e.preventDefault();
@@ -1314,7 +1384,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         });
     </script>
 <!--===============================================================================================-->
-    {!!Html::script('vendor/perfect-scrollbar/perfect-scrollbar.min.js')!!}
+    <script src="{!!URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')!!}"></script>
     <script>
         $('.js-pscroll').each(function(){
             $(this).css('position','relative');
@@ -1331,7 +1401,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         });
     </script>
 <!--===============================================================================================-->
-    {!!Html::script('js/main.js')!!}
+    <script src="{!!URL::asset('js/main.js')!!}"></script>
 
 </body>
 </html>
