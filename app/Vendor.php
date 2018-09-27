@@ -42,6 +42,10 @@ class Vendor extends Authenticatable
     	return $this->belongsTo('App\Location');
     }
 
+    public function projects()
+    {
+        return $this->hasMany('App\Project');
+    }
 
 }
 

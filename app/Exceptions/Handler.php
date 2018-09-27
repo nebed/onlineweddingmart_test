@@ -108,7 +108,23 @@ return response()->json(['error' => 'Unauthenticated.'], 401);
 
 }
 
-return redirect()->guest(route('login'));
+$guard = array_get($exception->guards(),0);
+ 
+        //using switch statement to switch between the guards
+        switch ($guard) {
+            case 'vendor':
+                $login = 'vendor.login';
+                break;
+            case 'customer':
+	            $login = 'customer.login';
+	            break;
+            default:
+                $login = 'login';
+                break;
+        }
+    return redirect()->guest(route($login));
+
+		//return redirect()->guest(route('login'));
 
 }
 

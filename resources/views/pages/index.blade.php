@@ -115,7 +115,7 @@
 </div>
 
 <!-- Modal Vendor Login -->
-    <div class="modal fade vendorlogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div id="modal-vendor-login" class="modal fade vendorlogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -145,10 +145,14 @@
                 {{Form::submit('Sign In',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
 
                 {!! Form::close() !!}
-                <div class="text-right mt-5">
+                <div class="txt-center mt-5">
+                        <p>Don't have an account? <a>Sign Up</a>
                  </div>
 
                  <div class="">
+                    <a href="#" id="launch-vendor-register" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            Vendor Sign Up
+                        </a>
                  </div>
                  
                   </div>
@@ -163,31 +167,6 @@
     <header class="header-v3">
         <!-- Header desktop -->
         <div class="container-menu-desktop trans-03">
-            <div class="top-bar">
-                <div class="content-topbar flex-sb-m h-full container">
-                    <div class="left-top-bar">
-                        onlineweddingmart.com | Weddings Made Easy
-                    </div>
-
-                    <div class="right-top-bar flex-w h-full">
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            Help & FAQs
-                        </a>
-
-                        <a href="#" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Login
-                        </a>
-
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            EN
-                        </a>
-
-                        <a href="#" class="flex-c-m trans-04 p-lr-25">
-                            USD
-                        </a>
-                    </div>
-                </div>
-            </div>
             <div class="wrap-menu-desktop">
                 <nav class="limiter-menu-desktop p-l-45">
                     
@@ -238,8 +217,8 @@
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
 
                         <div class="flex-c-m h-full p-r-25 bor6">
-                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
-                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
+                            <div class="icon-header-item cl0 trans-04 p-lr-11">
+                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".vendorlogin">Login</a>
                             </div>
                         </div>
 
@@ -269,8 +248,8 @@
             <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-5">
-                    <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
-                        <a class="btn mtext-104 cl0 size-40 bg1 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
+                    <div class="icon-header-item cl0 trans-04 p-lr-11">
+                        <a class="btn mtext-104 cl0 hov-btn2 size-40 bg1 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
                     </div>
                 </div>
             </div>
@@ -736,7 +715,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                 </div>
             </div>
             <div class="p-t-9 flex-c-m flex-w w-full respon3">
-                <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn1 p-lr-15 trans-04">
+                <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn2 p-lr-15 trans-04">
                     Browse All Categories
                 </a>
             </div>
@@ -981,7 +960,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                 </div>
 
                 <div class="flex-c-m flex-w w-full respon3">
-                <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn1 p-lr-15 trans-04">
+                <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn2 p-lr-15 trans-04">
                     Read The Blog
                 </a>
             </div>
@@ -1331,6 +1310,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script>
         $('#launch-vendor-login').click(function(){
             $('#modal-vendor-register').modal('hide');
+        });
+
+        $('#launch-vendor-register').click(function(){
+            $('#modal-vendor-login').modal('hide');
         });
 
         $('.gallery-lb').each(function() { // the containers for all your galleries

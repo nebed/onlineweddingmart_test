@@ -274,8 +274,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     z-index: 3;
 }
 #sidebar .list-group {
-    min-width: 400px;
-    background-color: #333;
+    max-width: 250px;
     min-height: 100vh;
 }
 #sidebar i {
@@ -284,11 +283,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 #sidebar .list-group-item {
     border-radius: 0;
-    background-color: #333;
-    color: #ccc;
+    background-color: #93278f;
+    color: #fff;
     border-left: 0;
     border-right: 0;
-    border-color: #2c2c2c;
     white-space: nowrap;
 }
 
@@ -374,7 +372,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .header-v2 .wrap-menu-desktop {
-  background-color: #fff;
+  background-color: #93278f;
   top: 0;
 }
 
@@ -421,7 +419,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   max-height: 100%;
 }
 
-
+/*Favicon ----------------*/
+.fa-navicon {
+    color: #93278f;
+}
 
 /*------------------------------------------------------------------
 [ Menu ]*/
@@ -464,6 +465,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
+}
+
+.header-v2 .main-menu > li > a {
+  color: #fff;
 }
 
 .header-v3 .main-menu > li > a {
@@ -3250,8 +3255,8 @@ input.num-product::-webkit-inner-spin-button {
 /*---------------------------------------------*/
 .hov-btn2:hover {
   border-color: #fff;
-  background-color: #fff;
-  color: #93278f;
+  background-color: #ed1c24;
+  color: #fff;
 }
 
 /*---------------------------------------------*/

@@ -51,15 +51,16 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key' => 'AKIAIUOA7EGT3YVP7N3Q',
+            'secret' => 'g157Vtttc0yZOAzWv5qQy0asReq9IhH8GpOkB60E',
+            'region' => 'us-west-2',
+            'bucket' => 'onlineweddingmart',
         ],
 
     ],
