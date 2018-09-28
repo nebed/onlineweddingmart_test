@@ -113,10 +113,10 @@ $guard = array_get($exception->guards(),0);
         //using switch statement to switch between the guards
         switch ($guard) {
             case 'vendor':
-                $login = 'vendor.login';
+                $login = 'login.vendor';
                 break;
             case 'customer':
-	            $login = 'customer.login';
+	            $login = 'login.customer';
 	            break;
             default:
                 $login = 'login';

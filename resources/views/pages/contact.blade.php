@@ -33,7 +33,6 @@
 <!--===============================================================================================-->
     {!!Html::style('/css/util.css')!!}
 {!!Html::style('/css/main.css')!!}
-@yield('stylesheet')
 <!--===============================================================================================-->
 </head>
   <body class="animsition">
@@ -47,7 +46,7 @@
                 <nav class="limiter-menu-desktop p-l-45">
                     
                     <!-- Logo desktop -->       
-                    <a href="/" class="logo">
+                    <a href="#" class="logo">
                         <img src="{{URL::asset('/images/icons/logo-02.png')}}" alt="IMG-LOGO">
                     </a>
 
@@ -55,36 +54,36 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li>
-                                <a href="/vendors/all/">Vendors</a>
+                                <a href="index.html">Vendors</a>
                                 <ul class="sub-menu">
-                                    @foreach($servicesmenu as $servicemenu)
-                                    <li><a href="/vendors/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
-                                    @endforeach
+                                    <li><a href="index.html">Homepage 1</a></li>
+                                    <li><a href="home-02.html">Homepage 2</a></li>
+                                    <li><a href="home-03.html">Homepage 3</a></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="/blog/real-weddings">Real Wedding</a>
+                                <a href="product.html">Real Wedding</a>
                             </li>
 
                             <li>
-                                <a href="/blog/destination-wedding">Destination Wedding</a>
+                                <a href="blog.html">Destination Wedding</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
-                                <a href="/honeymoon-package">HoneyMoon Package</a>
+                                <a href="shoping-cart.html">Honey-Moon Package</a>
                             </li>
 
                             <li>
-                                <a href="/blog">Blog</a>
+                                <a href="blog.html">Blog</a>
                             </li>
 
                             <li>
-                                <a href="/about">About</a>
+                                <a href="about.html">About</a>
                             </li>
 
                             <li>
-                                <a href="/contact">Contact</a>
+                                <a href="contact.html">Contact</a>
                             </li>
                         </ul>
                     </div>  
@@ -112,7 +111,7 @@
        <div class="wrap-header-mobile">
             <!-- Logo moblie -->        
             <div class="logo-mobile">
-                <a href="/"><img src="{{URL::asset('/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
+                <a href="index.html"><img src="{{URL::asset('/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
             </div>
 
             <!-- Icon header -->
@@ -146,11 +145,11 @@
 
             <ul class="main-menu-m">
                 <li>
-                    <a href="/">Home</a>
+                    <a href="index.html">Home</a>
                     <ul class="sub-menu-m">
-                        @foreach($servicesmenu as $servicemenu)
-                            <li><a href="{{'/vendor/$servicemenu->slug'}}">{{$servicemenu->name}}</a></li>
-                        @endforeach
+                        <li><a href="index.html">Homepage 1</a></li>
+                        <li><a href="home-02.html">Homepage 2</a></li>
+                        <li><a href="home-03.html">Homepage 3</a></li>
                     </ul>
                     <span class="arrow-main-menu-m">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -158,27 +157,23 @@
                 </li>
 
                 <li>
-                    <a href="/blog/real-weddings">Real Wedding</a>
+                    <a href="product.html">Shop</a>
                 </li>
 
                 <li>
-                    <a href="/blog/destination-wedding">Destination Wedding</a>
+                    <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
                 </li>
 
                 <li>
-                    <a href="/honeymoon-package" class="label1 rs1" data-label1="hot">HoneyMoon Package</a>
+                    <a href="blog.html">Blog</a>
                 </li>
 
                 <li>
-                    <a href="/blog">Blog</a>
+                    <a href="about.html">About</a>
                 </li>
 
                 <li>
-                    <a href="/about">About</a>
-                </li>
-
-                <li>
-                    <a href="/contact">Contact</a>
+                    <a href="contact.html">Contact</a>
                 </li>
             </ul>
         </div>
@@ -200,7 +195,19 @@
             </form>
         </div>
     </header>
-    @yield('content')
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+
+            </div>
+            <div class="col-md-6 col-sm-6">
+                
+            </div>
+        </div>
+    </div>
+
 
     <footer class="bg3 p-t-75 p-b-32">
         <div class="container">
@@ -211,13 +218,29 @@
                     </h4>
 
                     <ul>
-                        @foreach($servicesmenu as $servicemenu)
                         <li class="p-b-10">
-                            <a href="/vendors/{{$servicemenu->slug}}" class="stext-107 cl7 hov-cl1 trans-04">
-                                {{$servicemenu->name}}
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Wedding Dresses
                             </a>
                         </li>
-                        @endforeach
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Groom Suits
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Traditional Wears
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Bridal MakeUp
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -228,20 +251,26 @@
 
                     <ul>
                         <li class="p-b-10">
-                            <a href="/blog/real-weddings" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
                                 Real Weddings
                             </a>
                         </li>
 
                         <li class="p-b-10">
-                            <a href="/blog" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
                                 Blog 
                             </a>
                         </li>
 
                         <li class="p-b-10">
-                            <a href="/privacy-policy" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
                                Privacy Policy
+                            </a>
+                        </li>
+
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                FAQs
                             </a>
                         </li>
                     </ul>
@@ -331,7 +360,6 @@ Copyright ©<script>document.write(new Date().getFullYear());</script> All right
 <!--===============================================================================================-->
     {!!Html::script('/vendor/select2/select2.min.js')!!}
     {!!Html::script('/js/main.js')!!}
-    @yield('script')
         
 </body>
 </html>

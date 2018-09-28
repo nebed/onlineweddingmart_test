@@ -17,7 +17,16 @@ class PagesController extends Controller {
 		$locations = Location::all();
 		return view('pages.index')->withServices($services)->withLocations($locations);
 	}
+
+	public function getAbout(){
+
+		return view('pages.about');
+	}
 	
+	public function getContact(){
+
+		return view('pages.contact');
+	}
 	
 	
 }
