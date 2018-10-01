@@ -7,7 +7,6 @@
 | online  => http://unisharp.github.io/laravel-filemanager/config
 | offline => vendor/unisharp/laravel-filemanager/docs/config.md
 */
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -17,7 +16,9 @@ return [
 
     'use_package_routes' => true,
 
-    'middlewares' => ['web', 'auth:vendor'],
+
+
+    'middlewares' => ['web', 'auth:vendor,web'],
 
     // The url to this package. Change it if necessary.
     'url_prefix' => 'laravel-filemanager',

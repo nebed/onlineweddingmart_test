@@ -243,7 +243,7 @@
         </div>
 
         <!-- Header Mobile -->
-        <div class="wrap-header-mobile">
+       <div class="wrap-header-mobile">
             <!-- Logo moblie -->        
             <div class="logo-mobile">
                 <a href="/"><img src="{{URL::asset('/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
@@ -263,7 +263,7 @@
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
                     <i class="zmdi zmdi-search"></i>
                 </div>
-                @if(Auth::check())
+                @if(Auth::guard('vendor')->check() || Auth::guard('customer')->check())
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 js-show-cart">
                     <i class="zmdi zmdi-account"></i>
                 </div>
@@ -1003,7 +1003,7 @@ Find the best wedding vendors </p>
                     <ul>
                         @foreach($servicesmenu as $servicemenu)
                         <li class="p-b-10">
-                            <a href="/vendors/{{$servicemenu->slug}}" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/vendors/all/{{$servicemenu->slug}}" class="stext-107 cl7 hov-cl1 trans-04">
                                 {{$servicemenu->name}}
                             </a>
                         </li>

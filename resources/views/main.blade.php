@@ -319,7 +319,7 @@
                     <ul>
                         @foreach($servicesmenu as $servicemenu)
                         <li class="p-b-10">
-                            <a href="/vendors/{{$servicemenu->slug}}" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/vendors/all/{{$servicemenu->slug}}" class="stext-107 cl7 hov-cl1 trans-04">
                                 {{$servicemenu->name}}
                             </a>
                         </li>

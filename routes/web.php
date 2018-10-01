@@ -18,12 +18,12 @@ Route::get('/home', 'PagesController@getIndex');
 Route::get('/', 'PagesController@getIndex');
 
 Route::group(['prefix' => 'vendors'], function () {
-	Route::get('/', 'VendorsController@getIndex')->name('vendors.all');
-	Route::get('vendors/all/{name}', 'VendorsController@getCategory')->name('vendors.category')->where('name', '[\w\d\-\_]{5,70}');
+	Route::get('all', 'VendorsController@getIndex')->name('vendors.all');
+	Route::get('all/{name}', 'VendorsController@getCategory')->name('vendors.category')->where('name', '[\w\d\-\_]{5,70}');
 });
 
 Route::group(['prefix' => 'profile'], function () {
-	Route::get('{name}', 'ProfileController@getProfile')->name('vendor.profile')->where('name', '[\w\d\-\_]{5,70}');
+	Route::get('{name}', 'ProfileController@getProfile')->name('vendors.profile')->where('name', '[\w\d\-\_]{5,70}');
 });
 
 Route::group(['prefix' => 'vendor'], function () {
@@ -46,11 +46,9 @@ Route::group(['prefix' => 'user'], function () {
 	Route::post('logout', 'Auth\LoginCustomerController@logout')->name('customer.logout');
 	Route::get('dashboard', 'CustomerController@getProfile')->name('customer.dashboard');
 });
+Route::get('blog/category/{name}', ['uses'=> 'BlogController@getCategory', 'as' => 'blog.category'])->where('slug', '[\w\d\-\_]{5,70}');
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]{5,70}');
-Route::get('blog/real-wedding', ['uses'=> 'BlogController@getWedding', 'as' => 'blog.realwedding']);
-Route::get('blog', ['uses'=> 'BlogController@getIndex', 'as' => 'blog.index']);
-
-Route::get('user/login', 'Auth\LoginCustomerController@ShowLogin')->name('login.customer');
+Route::get('blog', ['uses'=> 'BlogController@index', 'as' => 'blog.index']);
 
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
@@ -64,7 +62,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('password/reset','Auth\ForgotPasswordController@reset');
 	Route::get('password/reset/{token}', 'Auth\ForgotPasswordController@showResetForm')->name('password.reset');
 });
- Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:vendor']], function () {
+ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:vendor,web']], function () {
      \UniSharp\LaravelFilemanager\Lfm::routes();
  });
 Route::get('/vendor/feeds', 'VendorController@index');

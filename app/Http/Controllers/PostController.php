@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
    
     public function __construct()
     {
-        $this->middleware('web');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -18,7 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('admin.posts.index')->withPosts($posts);
     }
 
     /**
@@ -28,7 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.posts.create')->withCategories($categories);
     }
 
     /**
@@ -61,7 +65,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->withPost($post);
     }
 
     /**
