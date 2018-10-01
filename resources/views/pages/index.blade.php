@@ -9,7 +9,7 @@
 <!--===============================================================================================-->
    <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 <!--===============================================================================================-->
-   <link rel="stylesheet" href="{!!URL::asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')!!}">
+   <link rel="stylesheet" href="{!!URL::asset('fonts/font-awesome/css/font-awesome.min.css')!!}">
 <!--===============================================================================================-->
    <link rel="stylesheet" href="{!!URL::asset('fonts/iconic/css/material-design-iconic-font.min.css')!!}">
 <!--===============================================================================================-->
@@ -54,7 +54,7 @@
             <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-4">
-                      Hello
+                    <img class="img-fluid" src="{!!URL::asset('images/signin1.jpg')!!}">
                   </div>
                   <div class="col-md-8">
                     <div class="txt-center">
@@ -127,7 +127,7 @@
             <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-4">
-                      Hello
+                     <img class="img-fluid" src="{!!URL::asset('images/signin.jpg')!!}">
                   </div>
                   <div class="col-md-8">
                     <div class="txt-center">
@@ -166,7 +166,7 @@
     <!-- Header -->
     <header class="header-v3">
         <!-- Header desktop -->
-        <div class="container-menu-desktop trans-03">
+        <div class="container-menu-desktop">
             <div class="wrap-menu-desktop">
                 <nav class="limiter-menu-desktop p-l-45">
                     
@@ -181,34 +181,34 @@
                             <li>
                                 <a href="index.html">Vendors</a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Homepage 1</a></li>
-                                    <li><a href="home-02.html">Homepage 2</a></li>
-                                    <li><a href="home-03.html">Homepage 3</a></li>
+                                    @foreach($servicesmenu as $servicemenu)
+                                    <li><a href="/vendors/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="product.html">Real Wedding</a>
+                                <a href="/blog/real-wedding">Real Wedding</a>
                             </li>
 
                             <li>
-                                <a href="blog.html">Destination Wedding</a>
+                                <a href="/blog/destination-wedding">Destination Wedding</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
-                                <a href="shoping-cart.html">Honey-Moon Package</a>
+                                <a href="/honeymoon-package">HoneyMoon Package</a>
                             </li>
 
                             <li>
-                                <a href="blog.html">Blog</a>
+                                <a href="/blog">Blog</a>
                             </li>
 
                             <li>
-                                <a href="about.html">About</a>
+                                <a href="/about">About</a>
                             </li>
 
                             <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="/contact">Contact</a>
                             </li>
                         </ul>
                     </div>  
@@ -216,17 +216,21 @@
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
 
+                        @unless(Auth::guard('vendor')->check() || Auth::guard('customer')->check() )
                         <div class="flex-c-m h-full p-r-25 bor6">
                             <div class="icon-header-item cl0 trans-04 p-lr-11">
                                <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".vendorlogin">Login</a>
                             </div>
                         </div>
+                        @endunless
 
+                        @if(Auth::guard('vendor')->check() || Auth::guard('customer')->check())
                         <div class="flex-c-m h-full p-r-25 bor6">
-                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
-                                <i class="zmdi zmdi-shopping-cart"></i>
+                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-cart">
+                                <i class="zmdi zmdi-account"></i>
                             </div>
                         </div>
+                        @endif
                             
                         <div class="flex-c-m h-full p-lr-19">
                             <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
@@ -242,9 +246,9 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->        
             <div class="logo-mobile">
-                <a href="index.html"><img src={{URL::asset("images/icons/logo-01.png")}} alt="IMG-LOGO"></a>
+                <a href="/"><img src="{{URL::asset('/images/icons/logo-01.png')}}" alt="IMG-LOGO"></a>
             </div>
-
+            @unless(Auth::guard('vendor')->check() || Auth::guard('customer')->check() )
             <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-5">
@@ -252,6 +256,19 @@
                         <a class="btn mtext-104 cl0 hov-btn2 size-40 bg1 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
                     </div>
                 </div>
+            </div>
+            @endunless
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+                @if(Auth::check())
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 js-show-cart">
+                    <i class="zmdi zmdi-account"></i>
+                </div>
+                @endif
+
             </div>
 
             <!-- Button show menu -->
@@ -267,11 +284,11 @@
         <div class="menu-mobile">
             <ul class="main-menu-m">
                 <li>
-                    <a href="index.html">Vendors</a>
+                    <a href="/vendors/all">Vendors</a>
                     <ul class="sub-menu-m">
-                        <li><a href="index.html">Homepage 1</a></li>
-                        <li><a href="home-02.html">Homepage 2</a></li>
-                        <li><a href="home-03.html">Homepage 3</a></li>
+                        @foreach($servicesmenu as $servicemenu)
+                            <li><a href="/vendors/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
+                        @endforeach
                     </ul>
                     <span class="arrow-main-menu-m">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -279,23 +296,23 @@
                 </li>
 
                 <li>
-                    <a href="product.html">Real Wedding</a>
+                    <a href="/blog/real-wedding">Real Wedding</a>
                 </li>
 
                 <li>
-                    <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Honey-Moon Package</a>
+                    <a href="/honeymoon-package/blog" class="label1 rs1" data-label1="hot">Honey-Moon Package</a>
                 </li>
 
                 <li>
-                    <a href="blog.html">Blog</a>
+                    <a href="/blog">Blog</a>
                 </li>
 
                 <li>
-                    <a href="about.html">About</a>
+                    <a href="/about">About</a>
                 </li>
 
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -445,14 +462,14 @@
     </aside>
 
 
-    <!-- Cart -->
+     <!-- Cart -->
     <div class="wrap-header-cart js-panel-cart">
         <div class="s-full js-hide-cart"></div>
-
+        @if(Auth::guard('vendor')->check())
         <div class="header-cart flex-col-l p-l-65 p-r-25">
             <div class="header-cart-title flex-w flex-sb-m p-b-8">
                 <span class="mtext-103 cl2">
-                    Your Cart
+                   {{ Auth::guard('vendor')->user()->name }}
                 </span>
 
                 <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
@@ -461,55 +478,6 @@
             </div>
             
             <div class="header-cart-content flex-w js-pscroll">
-                <ul class="header-cart-wrapitem w-full">
-                    <li class="header-cart-item flex-w flex-t m-b-12">
-                        <div class="header-cart-item-img">
-                            <img src="images/item-cart-01.jpg" alt="IMG">
-                        </div>
-
-                        <div class="header-cart-item-txt p-t-8">
-                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                                White Shirt Pleat
-                            </a>
-
-                            <span class="header-cart-item-info">
-                                1 x $19.00
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="header-cart-item flex-w flex-t m-b-12">
-                        <div class="header-cart-item-img">
-                            <img src="images/item-cart-02.jpg" alt="IMG">
-                        </div>
-
-                        <div class="header-cart-item-txt p-t-8">
-                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                                Converse All Star
-                            </a>
-
-                            <span class="header-cart-item-info">
-                                1 x $39.00
-                            </span>
-                        </div>
-                    </li>
-
-                    <li class="header-cart-item flex-w flex-t m-b-12">
-                        <div class="header-cart-item-img">
-                            <img src="images/item-cart-03.jpg" alt="IMG">
-                        </div>
-
-                        <div class="header-cart-item-txt p-t-8">
-                            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                                Nixon Porter Leather
-                            </a>
-
-                            <span class="header-cart-item-info">
-                                1 x $17.00
-                            </span>
-                        </div>
-                    </li>
-                </ul>
                 
                 <div class="w-full">
                     <div class="header-cart-total w-full p-tb-40">
@@ -517,17 +485,70 @@
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
-                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                            View Cart
-                        </a>
-
-                        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                            Check Out
-                        </a>
+                        {!!Form::open(['route'=>'vendor.logout'])!!}
+                        {{Form::submit('Logout',['class'=>'flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10'])}}
+                        {!!Form::close()!!}
                     </div>
                 </div>
             </div>
         </div>
+        @endif
+        @if(Auth::guard('customer')->check())
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                   {{ Auth::guard('customer')->user()->name }}
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+            
+            <div class="header-cart-content flex-w js-pscroll">
+                
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        Total: $75.00
+                    </div>
+
+                    <div class="header-cart-buttons flex-w w-full">
+                        {!!Form::open(['route'=>'customer.logout'])!!}
+                        {{Form::submit('Logout',['class'=>'flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10'])}}
+                        {!!Form::close()!!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(Auth::guard('web')->check())
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                   {{ Auth::user()->name }}
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+            
+            <div class="header-cart-content flex-w js-pscroll">
+                
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        Total: $75.00
+                    </div>
+
+                    <div class="header-cart-buttons flex-w w-full">
+                        {!!Form::open(['route'=>'logout'])!!}
+                        {{Form::submit('Logout',['class'=>'flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10'])}}
+                        {!!Form::close()!!}
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 
 
@@ -543,23 +564,23 @@
                                 <h3 class="ltext-107 cl0 p-t-22 p-b-22 txt-center respon2">
                     Weddings Made Easy
                 </h3>
-                <p class="stext-110 txt-center cl0 p-t-22 p-b-22 respon2">Your Wedding, Your Way
-Find the best wedding vendors with thousands of trusted reviews</p>
+                <p class="stext-110 txt-center cl0 p-t-22 p-b-22 respon2">Your Wedding, Your Way.
+Find the best wedding vendors </p>
                             </div>
 
                                                 <div class="row txt-center justify-content-md-center">
                                 <div class="input-group">
                       <select class="mtext-104 size-117 custom-select" id="inputGroupSelect04">
                         <option selected>Select Vendor Type</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach($servicesmenu as $servicemenu)
+                        <option value="{{$servicemenu->id}}">{{$servicemenu->name}}</option>
+                        @endforeach
                       </select>
                       <select class="mtext-104 size-117 custom-select" id="inputGroupSelect04">
                         <option selected>Select City</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach($locationsmenu as $locationmenu)
+                        <option value="{{$locationmenu->id}}">{{$locationmenu->name}}</option>
+                        @endforeach
                       </select>
                       <div class="input-group-append">
                         <button class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-15 trans-04" type="button">Get Started</button>
@@ -592,7 +613,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-04.jpg" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/wedding-dress" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Wedding Dress
@@ -613,10 +634,10 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-05.jpg" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/groom-wear" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
-                                    Groom Suits
+                                    Groom Wear
                                 </span>
                             </div>
 
@@ -634,7 +655,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-07.jpg" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/traditional-wear" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Traditional Wears
@@ -656,7 +677,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-13.jpg" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/wedding-cakes" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Wedding Cakes
@@ -677,7 +698,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-08.jpg" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/bridal-makeup" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Bridal MakeUp
@@ -698,7 +719,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-09.jpg" alt="IMG-BANNER">
 
-                        <a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/wedding-photography" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Wedding Photography
@@ -971,7 +992,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
 
 
     <!-- Footer -->
-    <footer class="bg3 p-t-75 p-b-32">
+<footer class="bg3 p-t-75 p-b-32">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-lg-3 p-b-50">
@@ -980,29 +1001,13 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                     </h4>
 
                     <ul>
+                        @foreach($servicesmenu as $servicemenu)
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Wedding Dresses
+                            <a href="/vendors/{{$servicemenu->slug}}" class="stext-107 cl7 hov-cl1 trans-04">
+                                {{$servicemenu->name}}
                             </a>
                         </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Groom Suits
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Traditional Wears
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Bridal MakeUp
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -1013,26 +1018,20 @@ Find the best wedding vendors with thousands of trusted reviews</p>
 
                     <ul>
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/blog/real-weddings" class="stext-107 cl7 hov-cl1 trans-04">
                                 Real Weddings
                             </a>
                         </li>
 
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/blog" class="stext-107 cl7 hov-cl1 trans-04">
                                 Blog 
                             </a>
                         </li>
 
                         <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/privacy-policy" class="stext-107 cl7 hov-cl1 trans-04">
                                Privacy Policy
-                            </a>
-                        </li>
-
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                FAQs
                             </a>
                         </li>
                     </ul>
@@ -1106,7 +1105,7 @@ Find the best wedding vendors with thousands of trusted reviews</p>
                 </div>
 
                 <p class="stext-107 cl6 txt-center">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">UcheNebed</a>
+Copyright ©<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://twitter.com/uchenebed" target="_blank">UcheNebed</a>
 
                 </p>
             </div>

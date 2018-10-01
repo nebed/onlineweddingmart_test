@@ -129,11 +129,6 @@ class VendorController extends Controller
         //
     }
 
-    public function getIndex()
-    {
-        return view('vendors.index');
-    }
-
     public function getProjects()
     {
         $projects = Project::where('vendor_id',auth('vendor')->id())->get();
@@ -152,7 +147,7 @@ class VendorController extends Controller
         foreach ($locations as $location){
             $loc[$location->id]=$location->name;
         }
-        $vendor = Vendor::findOrFail(auth()->id());
+        $vendor = Vendor::findOrFail(auth('vendor')->id());
         return view('vendors.profile')->withVendor($vendor)->withLocations($loc)->withServices($serv);
     }
 }

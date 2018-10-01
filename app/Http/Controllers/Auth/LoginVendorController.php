@@ -22,7 +22,12 @@ class LoginVendorController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:vendor');
+        $this->middleware('guest:vendor',['except'=>['logout']]);
+    }
+
+    public function showLogin(Request $request)
+    {
+        return view('vendors.login');
     }
 
     public function login(Request $request)
@@ -37,6 +42,15 @@ class LoginVendorController extends Controller
             return redirect()->intended(route('vendor.profile'));
         }
 
-        return redirect()->back()->withInput($request->only('email', 'renmember'));
+        return redirect()->back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('vendor')->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
     }
 }

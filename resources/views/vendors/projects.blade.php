@@ -1,4 +1,6 @@
-@extends('baseprofile')
+@extends('main')
+
+@section('title', 'Profile | OWM')
 
 @section('content')
     <div class="container-fluid m-3">

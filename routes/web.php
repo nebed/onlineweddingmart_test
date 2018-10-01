@@ -15,15 +15,23 @@ Route::get('/contact', 'PagesController@getContact')->name('contact');
 Route::post('/contact', 'PagesController@postContact');
 Route::get('/about', 'PagesController@getAbout')->name('about');
 Route::get('/home', 'PagesController@getIndex');
-Route::get('/vendors', 'VendorController@getIndex');
 Route::get('/', 'PagesController@getIndex');
+
+Route::group(['prefix' => 'vendors'], function () {
+	Route::get('/', 'VendorsController@getIndex')->name('vendors.all');
+	Route::get('vendors/all/{name}', 'VendorsController@getCategory')->name('vendors.category')->where('name', '[\w\d\-\_]{5,70}');
+});
+
+Route::group(['prefix' => 'profile'], function () {
+	Route::get('{name}', 'ProfileController@getProfile')->name('vendor.profile')->where('name', '[\w\d\-\_]{5,70}');
+});
 
 Route::group(['prefix' => 'vendor'], function () {
 	Route::get('profile', 'VendorController@getProfile')->name('vendor.profile');
 	Route::put('update', 'VendorController@update')->name('vendor.update');
 	Route::get('projects', 'VendorController@getProjects')->name('vendor.projects');
 	Route::post('register', 'Auth\RegisterVendorController@register')->name('vendor.register');
-	Route::get('login', 'Auth\LoginVendorController@ShowLogin')->name('login.vendor');
+	Route::get('login', 'Auth\LoginVendorController@showLogin')->name('login.vendor');
 	Route::post('login', 'Auth\LoginVendorController@login')->name('vendor.login');
 	Route::post('logout', 'Auth\LoginVendorController@logout')->name('vendor.logout');
 	Route::get('reviews', 'Auth\LoginVendorController@getReviews')->name('vendor.reviews');
@@ -33,20 +41,32 @@ Route::group(['prefix' => 'vendor'], function () {
 
 Route::group(['prefix' => 'user'], function () {
 	Route::post('register', 'Auth\RegisterCustomerController@register')->name('customer.register');
-	Route::get('login', 'Auth\LoginCustomerController@ShowLogin')->name('login.customer');
+	Route::get('login', 'Auth\LoginCustomerController@showLogin')->name('login.customer');
 	Route::post('login', 'Auth\LoginCustomerController@login')->name('customer.login');
 	Route::post('logout', 'Auth\LoginCustomerController@logout')->name('customer.logout');
+	Route::get('dashboard', 'CustomerController@getProfile')->name('customer.dashboard');
 });
+Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]{5,70}');
+Route::get('blog/real-wedding', ['uses'=> 'BlogController@getWedding', 'as' => 'blog.realwedding']);
+Route::get('blog', ['uses'=> 'BlogController@getIndex', 'as' => 'blog.index']);
 
 Route::get('user/login', 'Auth\LoginCustomerController@ShowLogin')->name('login.customer');
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+	Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+	Route::resource('posts', 'PostController');
+	Route::resource('vendors', 'AdminVendorController');
+	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+	Route::post('login', 'Auth\LoginController@login');
+	Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+	Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+	Route::get('password/reset','Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+	Route::post('password/reset','Auth\ForgotPasswordController@reset');
+	Route::get('password/reset/{token}', 'Auth\ForgotPasswordController@showResetForm')->name('password.reset');
 });
  Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth:vendor']], function () {
      \UniSharp\LaravelFilemanager\Lfm::routes();
  });
-Auth::routes();
 Route::get('/vendor/feeds', 'VendorController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -9,7 +9,7 @@
 <!--===============================================================================================-->
    {!! Html::style('/vendor/bootstrap/css/bootstrap.min.css')!!}
 <!--===============================================================================================-->
-   {!!Html::style('/fonts/font-awesome-4.7.0/css/font-awesome.min.css')!!}
+   {!!Html::style('/fonts/font-awesome/css/font-awesome.min.css')!!}
 <!--===============================================================================================-->
    {!!Html::style('/fonts/iconic/css/material-design-iconic-font.min.css')!!}
 <!--===============================================================================================-->
@@ -339,27 +339,27 @@
 		<div class="container">
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" >
 						All Products
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
 						Women
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
 						Men
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
 						Bag
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
 						Shoes
 					</button>
 
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" >
 						Watches
 					</button>
 				</div>

@@ -1,4 +1,6 @@
-@extends('baseprofile')
+@extends('main')
+
+@section('title', 'Profile | OWM')
 
 @section('content')
         <!--Profile Content -->
@@ -92,7 +94,7 @@
                         {{Form::textarea('additional_info', null, ['class'=>'form-control'])}}
                       </div>
                     </div>
-                    <div class="form-group row row justify-content-end">
+                    <div class="form-group row justify-content-end">
                     <div class="col-12 .offset-md-3 col-sm-8 col-md-8">
                     {!!Form::submit('Save Changes', array('class' => 'submit stext-101 cl0 btn bg1 bor1 hov-btn2 p-lr-15 trans-04'))!!}
                     </div>

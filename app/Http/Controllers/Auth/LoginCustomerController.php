@@ -22,7 +22,12 @@ class LoginCustomerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:customer');
+        $this->middleware('guest:customer',['except'=>['logout']]);
+    }
+
+    public function showLogin(Request $request)
+    {
+        return view('customers.login');
     }
 
     public function login(Request $request)
@@ -37,6 +42,15 @@ class LoginCustomerController extends Controller
             return redirect()->intended(route('customer.dashboard'));
         }
 
-        return redirect()->back()->withInput($request->only('email', 'renmember'));
+        return redirect()->back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard('customer')->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
     }
 }

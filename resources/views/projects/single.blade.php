@@ -1,4 +1,7 @@
-@extends('baseprofile')
+@extends('main')
+
+@section('title', 'Profile | OWM')
+
 @section('stylesheet')
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 <link rel="stylesheet" href="/css/photos.css">

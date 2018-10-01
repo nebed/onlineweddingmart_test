@@ -148,8 +148,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Notifications\NotificationServiceProvider::class,
-        TCG\Voyager\VoyagerServiceProvider::class,
-        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
