@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class BlogController extends Controller
 {
@@ -19,7 +20,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(2);
+        $posts = Post::where('status','PUBLISHED')->orderBy('created_at', 'desc')->paginate(12);
         return view('blog.index')->withPosts($posts);
     }
 
@@ -50,9 +51,17 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug',$slug)->first();
+        if(!is_null($post))
+        {
+            return view('blog.single')->withPost($post);
+        }
+        else
+        {
+            return view('errors.404');
+        }
     }
 
     /**
@@ -87,5 +96,22 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getCategory($slug)
+    {
+        $category = Category::where('slug', '=', $slug)->first();
+        if(!is_null($category))
+            {
+                $category_id = $category->id;
+                $category_name = Category::where('slug', '=', $slug)->first()->name;
+                        $posts = Post::where('category_id', $category_id)->where('status','PUBLISHED')->orderBy('created_at', 'desc')->paginate(12);
+                        return view('blog.category')->withPosts($posts)->withCategoryname($category_name);
+            }
+        else
+        {
+            return view('errors.404');
+        }
+
     }
 }

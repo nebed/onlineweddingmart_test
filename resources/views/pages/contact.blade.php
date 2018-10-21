@@ -42,27 +42,11 @@
 
                         <div class="size-212 p-t-2">
                             <span class="mtext-110 cl2">
-                                Address
+                                OnlineWeddingMart
                             </span>
 
                             <p class="stext-115 cl6 size-213 p-t-18">
-                                Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex-w w-full p-b-42">
-                        <span class="fs-18 cl5 txt-center size-211">
-                            <span class="lnr lnr-phone-handset"></span>
-                        </span>
-
-                        <div class="size-212 p-t-2">
-                            <span class="mtext-110 cl2">
-                                Lets Talk
-                            </span>
-
-                            <p class="stext-115 cl1 size-213 p-t-18">
-                                +1 800 1236879
+                               Weddings Made Easy
                             </p>
                         </div>
                     </div>
@@ -74,11 +58,11 @@
 
                         <div class="size-212 p-t-2">
                             <span class="mtext-110 cl2">
-                                Sale Support
+                                Enquiries
                             </span>
 
                             <p class="stext-115 cl1 size-213 p-t-18">
-                                contact@example.com
+                                somto@onlineweddingmart.com
                             </p>
                         </div>
                     </div>

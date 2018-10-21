@@ -39,130 +39,7 @@
 <!--<body>-->
 
 
-    <body class="animsition">
-    
-    <!--Modal Vendor Register-->
-    <div class="modal fade bd-example-modal-lg" id="modal-vendor-register" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-4">
-                    <img class="img-fluid" src="{!!URL::asset('images/signin1.jpg')!!}">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="txt-center">
-                        <h3>"Grow Your Business with OWM"</h3>
-                        <h5>Sign Up to access your Dasboard</h5>
-                    </div>
-                    <br>
-                    @if($errors)
-                   <p> {!! $errors->first() !!}</p>
-                   @endif
-                      {!! Form::open(['route'=>'vendor.register']) !!}
-                      {{ csrf_field() }}
-                {{Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Your Name*' ])}}
-                <small id="emailHelp" class="form-text text-danger mb-1">Required*</small>
-                {{Form::email('email',null,['class'=>'form-control', 'placeholder'=>'Your Email*'])}}
-                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
-                {{Form::text('brand_name',null,['class'=>'form-control', 'placeholder'=>'Brand Name*'])}}
-                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
-                  <select class="form-control" name="service_id">
-                    <option value=''>Select Vendor Type*</option>
-                    @foreach($services as $service)
-                    <option value='{{$service->id}}'>{{$service->name}}</option>
-                    @endforeach
-
-                  </select>
-                  <small id="emailHelp" class="form-text text-danger mb-1">Required*</small>
-                  <select class="form-control" name="location_id">
-                    <option value=''>City (choose your base city here)*</option>
-                    @foreach($locations as $location)
-                    <option value='{{$location->id}}'>{{$location->name}}</option>
-                    @endforeach
-
-                  </select>
-                  <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
-                {{Form::password('password',['class'=>'form-control','placeholder'=>'Password*'])}}
-               <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
-                {{Form::password('password_confirmation',['class'=>'form-control', 'placeholder'=>'Confirm Password*'])}}
-                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
-                {{Form::submit('Sign Up',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
-
-                {!! Form::close() !!}
-                <div class="txt-center mt-5">
-                        <p>Already have an Accout? <a>Sign In</a>
-                 </div>
-
-                 <div class="">
-                    <a href="#" id="launch-vendor-login" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".vendorlogin">
-                            Vendor Login
-                        </a>
-                 </div>
-
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Vendor Login -->
-    <div id="modal-vendor-login" class="modal fade vendorlogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-            <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-4">
-                     <img class="img-fluid" src="{!!URL::asset('images/signin.jpg')!!}">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="txt-center">
-                        <h3>"Grow Your Business with OWM"</h3>
-                        <h5>Sign In to access your Dasboard</h5>
-                    </div>
-                    <br>
-                    @if($errors)
-                   <p> {!! $errors->first() !!}</p>
-                   @endif
-                      {!! Form::open(['route'=>'vendor.login']) !!}
-                      {{ csrf_field() }}
-                {{Form::email('email',null,['class'=>'form-control mb-1', 'placeholder'=>'Your Email*'])}}
-                {{Form::password('password',['class'=>'form-control mb-1','placeholder'=>'Password*'])}}
-                {{Form::submit('Sign In',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
-
-                {!! Form::close() !!}
-                <div class="txt-center mt-5">
-                        <p>Don't have an account? <a>Sign Up</a>
-                 </div>
-
-                 <div class="">
-                    <a href="#" id="launch-vendor-register" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Vendor Sign Up
-                        </a>
-                 </div>
-                 
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-</div>
-
+    <body class="">
     <!-- Header -->
     <header class="header-v3">
         <!-- Header desktop -->
@@ -179,20 +56,20 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li>
-                                <a href="index.html">Vendors</a>
+                                <a href="/vendors/all">Vendors</a>
                                 <ul class="sub-menu">
                                     @foreach($servicesmenu as $servicemenu)
-                                    <li><a href="/vendors/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
+                                    <li><a href="/vendors/all/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="/blog/real-wedding">Real Wedding</a>
+                                <a href="/blog/category/real-wedding">Real Wedding</a>
                             </li>
 
                             <li>
-                                <a href="/blog/destination-wedding">Destination Wedding</a>
+                                <a href="/blog/category/destination-wedding">Destination Wedding</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
@@ -219,7 +96,7 @@
                         @unless(Auth::guard('vendor')->check() || Auth::guard('customer')->check() )
                         <div class="flex-c-m h-full p-r-25 bor6">
                             <div class="icon-header-item cl0 trans-04 p-lr-11">
-                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".vendorlogin">Login</a>
+                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" href="{{route('login.customer')}}">Login</a>
                             </div>
                         </div>
                         @endunless
@@ -233,7 +110,7 @@
                         @endif
                             
                         <div class="flex-c-m h-full p-lr-19">
-                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 ">
                                 <i class="zmdi zmdi-menu"></i>
                             </div>
                         </div>
@@ -253,7 +130,7 @@
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-5">
                     <div class="icon-header-item cl0 trans-04 p-lr-11">
-                        <a class="btn mtext-104 cl0 hov-btn2 size-40 bg1 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
+                        <a href="{{route('login.customer')}}" class="btn mtext-104 cl0 hov-btn2 size-40 bg1 p-lr-10 trans-04" type="button">Login</a>
                     </div>
                 </div>
             </div>
@@ -287,7 +164,7 @@
                     <a href="/vendors/all">Vendors</a>
                     <ul class="sub-menu-m">
                         @foreach($servicesmenu as $servicemenu)
-                            <li><a href="/vendors/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
+                            <li><a href="/vendors/all/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
                         @endforeach
                     </ul>
                     <span class="arrow-main-menu-m">
@@ -569,7 +446,7 @@ Find the best wedding vendors </p>
                             </div>
 
                                                 <div class="row txt-center justify-content-md-center">
-                                <div class="input-group">
+                                <div class="input-group respon3">
                       <select class="mtext-104 size-117 custom-select" id="inputGroupSelect04">
                         <option selected>Select Vendor Type</option>
                         @foreach($servicesmenu as $servicemenu)
@@ -613,7 +490,7 @@ Find the best wedding vendors </p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-04.jpg" alt="IMG-BANNER">
 
-                        <a href="/wedding-dress" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/all/wedding-dress" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Wedding Dress
@@ -634,7 +511,7 @@ Find the best wedding vendors </p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-05.jpg" alt="IMG-BANNER">
 
-                        <a href="/vendors/groom-wear" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/all/groom-wear" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Groom Wear
@@ -655,7 +532,7 @@ Find the best wedding vendors </p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-07.jpg" alt="IMG-BANNER">
 
-                        <a href="/vendors/traditional-wear" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/all/traditional-wear" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Traditional Wears
@@ -677,7 +554,7 @@ Find the best wedding vendors </p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-13.jpg" alt="IMG-BANNER">
 
-                        <a href="/vendors/wedding-cakes" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/all/wedding-cakes" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Wedding Cakes
@@ -698,7 +575,7 @@ Find the best wedding vendors </p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-08.jpg" alt="IMG-BANNER">
 
-                        <a href="/vendors/bridal-makeup" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/all/bridal-makeup" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Bridal MakeUp
@@ -719,7 +596,7 @@ Find the best wedding vendors </p>
                     <div class="block1 wrap-pic-w">
                         <img src="images/banner-09.jpg" alt="IMG-BANNER">
 
-                        <a href="/vendors/wedding-photography" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                        <a href="/vendors/all/wedding-photography" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
                             <div class="block1-txt-child1 flex-col-l">
                                 <span class="block1-name ltext-102 trans-04 p-b-8">
                                     Wedding Photography
@@ -841,11 +718,12 @@ Find the best wedding vendors </p>
                         <!-- Slide2 -->
                         <div class="wrap-slick2">
                             <div class="slick2">
+                                @foreach($posts as $post)
                                 <div class="item-slick2 col-sm-6 col-md-4 p-b-40">
                                     <!-- Block2 -->
                                     <div class="block2">
                                         <div class="block2-pic hov-img0">
-                                            <img src="images/blog-02.jpg" alt="IMG-PRODUCT">
+                                            <img src="{{URL::asset('images/thumbs/'.$post->image)}}" alt="IMG-POST">
                                         </div>
 
                                         <div class="p-t-15">
@@ -856,7 +734,7 @@ Find the best wedding vendors </p>
                                     </span>
 
                                     <span class="cl5">
-                                        Somto Ezife
+                                        Admin
                                     </span>
                                 </span>
 
@@ -866,122 +744,32 @@ Find the best wedding vendors </p>
                                     </span>
 
                                     <span class="cl5">
-                                        August 30, 2018
+                                        {{date('F j, Y',strtotime($post->created_at))}}
                                     </span>
                                 </span>
                             </div>
 
                             <h4 class="p-b-12">
-                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-                                    The Great Big List of Men’s Gifts for the Holidays
+                                <a href="{{route('blog.single', $post->slug)}}" class="mtext-101 cl2 hov-cl1 trans-04">
+                                    {{$post->title}}
                                 </a>
                             </h4>
 
                             <p class="stext-108 cl6">
-                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+                                {!!substr($post->body, 0,56)!!}{{strlen($post->body) >150 ? "..." : ""}}
                             </p>
                         </div>
                                     </div>
                                 </div>
+                                @endforeach
 
-                                <div class="item-slick2 col-sm-6 col-md-4 p-b-40">
-                                    <!-- Block2 -->
-                                    <div class="block2">
-                                        <div class="block2-pic hov-img0">
-                                            <img src="images/blog-01.jpg" alt="IMG-PRODUCT">
-                                        </div>
-
-                                        <div class="p-t-15">
-                            <div class="stext-107 flex-w p-b-14">
-                                <span class="m-r-3">
-                                    <span class="cl4">
-                                        By
-                                    </span>
-
-                                    <span class="cl5">
-                                        Somto Ezife
-                                    </span>
-                                </span>
-
-                                <span>
-                                    <span class="cl4">
-                                        on
-                                    </span>
-
-                                    <span class="cl5">
-                                        August 30, 2018 
-                                    </span>
-                                </span>
-                            </div>
-
-                            <h4 class="p-b-12">
-                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-                                    8 Inspiring Ways to Wear Dresses in the Winter
-                                </a>
-                            </h4>
-
-                            <p class="stext-108 cl6">
-                                Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
-                            </p>
-                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item-slick2 col-sm-6 col-md-4 p-b-40">
-                                    <!-- Block2 -->
-                                    <div class="block2">
-                                        <div class="block2-pic hov-img0">
-                                            <img src="images/blog-03.jpg" alt="IMG-PRODUCT">
-
-                                            
-                                        </div>
-
-                                        <div class="p-t-15">
-                            <div class="stext-107 flex-w p-b-14">
-                                <span class="m-r-3">
-                                    <span class="cl4">
-                                        By
-                                    </span>
-
-                                    <span class="cl5">
-                                        Somto Ezife
-                                    </span>
-                                </span>
-
-                                <span>
-                                    <span class="cl4">
-                                        on
-                                    </span>
-
-                                    <span class="cl5">
-                                        August 30, 2018
-                                    </span>
-                                </span>
-                            </div>
-
-                            <h4 class="p-b-12">
-                                <a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-                                    The Great Big List of Men’s Gifts for the Holidays
-                                </a>
-                            </h4>
-
-                            <p class="stext-108 cl6">
-                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-                            </p>
-                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
 
                         </div>
                     </div>
                 </div>
 
                 <div class="flex-c-m flex-w w-full respon3">
-                <a href="#" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn2 p-lr-15 trans-04">
+                <a href="/blog" class="flex-c-m stext-101 cl0 size-126 bg1 hov-btn2 p-lr-15 trans-04">
                     Read The Blog
                 </a>
             </div>
@@ -1018,7 +806,7 @@ Find the best wedding vendors </p>
 
                     <ul>
                         <li class="p-b-10">
-                            <a href="/blog/real-weddings" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/blog/category/real-wedding" class="stext-107 cl7 hov-cl1 trans-04">
                                 Real Weddings
                             </a>
                         </li>
@@ -1047,15 +835,15 @@ Find the best wedding vendors </p>
                     </p>
 
                     <div class="p-t-27">
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://facebook.com/o_weddingmart" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-facebook"></i>
                         </a>
 
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://instagram.com/o_weddingmart" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-instagram"></i>
                         </a>
 
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://pinterest.com/o_weddingmart" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-pinterest-p"></i>
                         </a>
                     </div>
@@ -1084,23 +872,23 @@ Find the best wedding vendors </p>
             <div class="p-t-40">
                 <div class="flex-c-m flex-w p-b-18">
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-01.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-02.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-03.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-04.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('images/icons/icon-pay-05.png')}}" alt="ICON-PAY">
                     </a>
                 </div>
 
@@ -1333,27 +1121,6 @@ Copyright ©<script>document.write(new Date().getFullYear());</script> All right
     <script>
         $('.js-addwish-b2').on('click', function(e){
             e.preventDefault();
-        });
-
-        $('.js-addwish-b2').each(function(){
-            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-            $(this).on('click', function(){
-                swal(nameProduct, "is added to wishlist !", "success");
-
-                $(this).addClass('js-addedwish-b2');
-                $(this).off('click');
-            });
-        });
-
-        $('.js-addwish-detail').each(function(){
-            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-            $(this).on('click', function(){
-                swal(nameProduct, "is added to wishlist !", "success");
-
-                $(this).addClass('js-addedwish-detail');
-                $(this).off('click');
-            });
         });
 
         /*---------------------------------------------*/

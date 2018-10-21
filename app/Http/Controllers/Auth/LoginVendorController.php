@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginVendorController extends Controller
 {
+    use ThrottlesLogins, RedirectsUsers;
     /*
     |--------------------------------------------------------------------------
     | Login Vendor Controller
@@ -39,10 +42,15 @@ class LoginVendorController extends Controller
 
         if (Auth::guard('vendor')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
         {
+            $request->session()->regenerate();
+
+            $this->clearLoginAttempts($request);
             return redirect()->intended(route('vendor.profile'));
+            //return $this->sendLoginResponse($request);
         }
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        //return redirect()->back()->withInput($request->only('email', 'remember'));
+        return $this->sendFailedLoginResponse($request);
     }
 
     public function logout(Request $request)
@@ -53,4 +61,33 @@ class LoginVendorController extends Controller
 
         return redirect('/');
     }
+
+     public function username()
+    {
+        return 'email';
+    }
+
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $errors = [$this->username() => trans('auth.failed')];
+
+        if ($request->expectsJson()) {
+            return response()->json($errors, 422);
+        }
+
+        return redirect()->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors($errors);
+    }
+
+    /*protected function sendLoginResponse(Request $request)
+    /{
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard('vendor')->user())
+                ?: redirect()->intended($this->redirectPath());
+    }*/
 }

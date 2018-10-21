@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vendor;
 
 class ProfileController extends Controller
 {
@@ -19,6 +20,12 @@ class ProfileController extends Controller
     public function index()
     {
         //
+    }
+
+    public function getProfile($name)
+    {
+        $profile = Vendor::where('slug',$name)->get();
+        return view('profile.home')->withProfile($profile);
     }
 
     /**

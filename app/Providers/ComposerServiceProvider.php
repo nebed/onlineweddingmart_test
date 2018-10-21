@@ -18,7 +18,10 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(
             '*', 'App\Http\ViewComposers\VariableComposer'
         );
-
+        View::composer(
+            ['blog.index', 'blog.single', 'blog.category'], 'App\Http\ViewComposers\BlogComposer'
+        );
+        
         // Using Closure based composers...
         //View::composer('dashboard', function ($view) {
             //

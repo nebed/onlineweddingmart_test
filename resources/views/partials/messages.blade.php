@@ -16,15 +16,12 @@
 
 @endif
 
-@if (count($errors)>0)
- <div class="alert alert-danger alert-dismissible">
+ <!--<div class="alert alert-danger alert-dismissible">
  	<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<p><strong>Errors:</strong>
 		<ul> 
-		@foreach ($errors->all() as $error)
-		<li>{{ $error }}</li>
-		@endforeach
+
+		<li></li>
 		</ul>
 		</p>
-        </div>
-@endif
+        </div>-->

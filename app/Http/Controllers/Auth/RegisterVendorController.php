@@ -7,6 +7,7 @@ use App\Slug;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Session;
 
 class RegisterVendorController extends Controller
 {
@@ -30,7 +31,7 @@ class RegisterVendorController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/vendors/profile';
+    protected $redirectTo = '/vendor/profile';
 
     /**
      * Create a new controller instance.
@@ -60,6 +61,11 @@ class RegisterVendorController extends Controller
         ]);
     }
 
+    public function showRegister()
+    {
+        return view('vendors.register');
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -78,5 +84,6 @@ class RegisterVendorController extends Controller
             'location_id' => $data['location_id'],
             'brand_name' => $data['brand_name'],
         ]);
+        Session::flash('success', 'You have been successfully registered, login to access your dashboard');
     }
 }

@@ -8,15 +8,23 @@ use App\Http\Requests;
 
 use App\Service;
 use App\Location;
+use App\Post;
 use Mail;
 use Session;
 
 class PagesController extends Controller {
+
+	public function __construct()
+    {
+        $this->middleware('web');
+    }
+    
 	public function getIndex(){
 
 		$services = Service::all();
 		$locations = Location::all();
-		return view('pages.index')->withServices($services)->withLocations($locations);
+		$posts = $posts = Post::where('status','PUBLISHED')->orderBy('created_at', 'desc')->take(6)->get();
+		return view('pages.index')->withServices($services)->withLocations($locations)->withPosts($posts);
 	}
 
 	public function getAbout(){
@@ -39,8 +47,7 @@ class PagesController extends Controller {
 		$data = array(
 			'email'=> $request->email,
 			'subject'=> $request->subject,
-			'bodyMessage'=> $request->message
-
+			'bodyMessage'=> $request->message,
 		);
 
 		Mail::send('emails.contact', $data, function($message) use($data){

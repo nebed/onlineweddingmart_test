@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Customer;
-use App\Slug;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -52,12 +51,14 @@ class RegisterCustomerController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:200',
-            'email' => 'required|email|max:255|unique:vendors',
+            'email' => 'required|email|max:255|unique:customers',
             'password' => 'required|min:6|confirmed',
-            'brand_name' => 'required|max:200',
-            'location_id' => 'required',
-            'service_id' => 'required',
         ]);
+    }
+
+    public function showRegister()
+    {
+        return view('customers.register');
     }
 
     /**
@@ -69,14 +70,11 @@ class RegisterCustomerController extends Controller
     protected function create(array $data)
     {
         //Slug::createSlug($data['brand_name']);
-        return Vendor::create([
+        return Customer::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'slug' => (new Slug)->createSlug($data['brand_name']),
-            'service_id' => $data['service_id'],
-            'location_id' => $data['location_id'],
-            'brand_name' => $data['brand_name'],
         ]);
+        Session::flash('success', 'You have been successfully registered');
     }
 }

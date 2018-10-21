@@ -10,4 +10,9 @@ class Service extends Model
     {
     	return $this->hasMany('App\Vendor');
     }
+
+    public function vendorspreview()
+    {
+    	return $this->hasMany('App\Vendor')->where('approved',true)->take(4);
+    }
 }

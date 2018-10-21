@@ -40,6 +40,10 @@ Notes:	decreasing heading by 0.4em with every subsequent heading level
 /*                   GENERIC                           */
 /*-----------------------------------------------------*/
 /* ----- Normalize ----- */
+
+html{
+    zoom:80%;
+}
 * {
     margin: 0;
     padding: 0;
@@ -120,6 +124,13 @@ h6 {
     line-height: 1.2;
 }
 
+.adapt {
+    color: #666 !important;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
 h1 {
     font-size: 36px;
 }
@@ -152,6 +163,11 @@ strong {
     font-weight: 700;
 }
 
+
+.help-block {
+
+        color: #ff2e44;
+}
 /*-----------------------------------------------------*/
 /*                   ELEMENTS                          */
 /*-----------------------------------------------------*/
@@ -324,6 +340,10 @@ section {
 .page-content--bge5 {
     background: #e5e5e5;
     height: 100vh;
+}
+.page-content--bge5-register {
+    background: #e5e5e5;
+    height: 150vh;
 }
 
 .login-wrap {

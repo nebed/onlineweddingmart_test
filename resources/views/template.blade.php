@@ -53,7 +53,7 @@
 	{!!Html::script('vendor/counter-up/jquery.waypoints.min.js')!!}
 	{!!Html::script('vendor/counter-up/jquery.counterup.min.js')!!}
 	{!!Html::script('vendor/circle-progress/circle-progress.min.js')!!}
-	{!!Html::script('vendor/perfect-scrollbar/perfect-scrollbar.js')!!}
+	{!!Html::script('vendor/perfect-scrollbar/perfect-scrollbar.min.js')!!}
 	{!!Html::script('vendor/chartjs/Chart.bundle.min.js')!!}
 	{!!Html::script('vendor/select2/select2.min.js')!!}
 

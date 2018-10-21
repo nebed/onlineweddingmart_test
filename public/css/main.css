@@ -33,7 +33,9 @@ Title           : 18px/1.6 '', Arial, sans-serif;
 Paragrap        : 18px/1.6 '', Arial, sans-serif;
 Input, textarea : 14px/1.6 '', Arial, sans-serif;
 -------------------------------------------------------------------*/
-
+html{
+  zoom: 80%;
+}
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -1828,7 +1830,9 @@ button.mfp-close {
     margin-top: 0;
 }
 
-
+.tsize1{
+  font-size:30px;
+}
 /*//////////////////////////////////////////////////////////////////
 [ Filter ]*/
 .show-search .icon-search,
@@ -2214,6 +2218,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*---------------------------------------------*/
+
 .block2-txt-child1 {
   width: calc(100% - 30px);
 }
@@ -2222,16 +2227,8 @@ input.num-product::-webkit-inner-spin-button {
   width: 30px;
 }
 
-.btn-addwish-b2 .icon-heart2 {
-  opacity: 0;
-}
-
-.btn-addwish-b2:hover .icon-heart2 {
-  opacity: 1;
-}
-
-.btn-addwish-b2:hover .icon-heart1 {
-  opacity: 0;
+.btn-addwish-b2:hover {
+  color: h;
 }
 
 .js-addedwish-b2 .icon-heart2 {
@@ -2812,6 +2809,7 @@ input.num-product::-webkit-inner-spin-button {
 .bg5 {background-color: rgba(0,0,0,0.5);}
 .bg6 {background-color: #f2f2f2;}
 .bg7 {background-color: #333;}
+.bg10 {background-color: #ed1c24;}
 .bg8 {background-color: #f3f3f3;}
 .bg9 {background-color: rgba(255,255,255,0.9);}
 
@@ -3216,7 +3214,8 @@ input.num-product::-webkit-inner-spin-button {
 
 .hov-cl0:hover {color: #fff;}
 .hov-bg0:hover {background-color: #fff;}
-.hov-cl1:hover {color: #717fe0;}
+.hov-cl1:hover {color: #93278f;}
+.hov-cl2:hover {color: #ed1c24;}
 .hov-bg1:hover {background-color: #717fe0;}
 
 /*---------------------------------------------*/

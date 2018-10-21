@@ -37,6 +37,122 @@
 <!--===============================================================================================-->
 </head>
   <body class="animsition">
+
+    <!--Modal Vendor Register-->
+    <div class="modal fade bd-example-modal-lg" id="modal-vendor-register" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-fluid" src="{!!URL::asset('images/signin1.jpg')!!}">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="txt-center">
+                        <h3>"Grow Your Business with OWM"</h3>
+                        <h5>Sign Up to access your Dasboard</h5>
+                    </div>
+                    <br>
+                      {!! Form::open(['route'=>'vendor.register']) !!}
+                      {{ csrf_field() }}
+                {{Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Your Name*' ])}}
+                <small id="emailHelp" class="form-text text-danger mb-1">Required*</small>
+                {{Form::email('email',null,['class'=>'form-control', 'placeholder'=>'Your Email*'])}}
+                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::text('brand_name',null,['class'=>'form-control', 'placeholder'=>'Brand Name*'])}}
+                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                  <select class="form-control" name="service_id">
+                    <option value=''>Select Vendor Type*</option>
+                    @foreach($servicesmenu as $service)
+                    <option value='{{$service->id}}'>{{$service->name}}</option>
+                    @endforeach
+
+                  </select>
+                  <small id="emailHelp" class="form-text text-danger mb-1">Required*</small>
+                  <select class="form-control" name="location_id">
+                    <option value=''>City (choose your base city here)*</option>
+                    @foreach($locationsmenu as $location)
+                    <option value='{{$location->id}}'>{{$location->name}}</option>
+                    @endforeach
+
+                  </select>
+                  <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::password('password',['class'=>'form-control','placeholder'=>'Password*'])}}
+               <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::password('password_confirmation',['class'=>'form-control', 'placeholder'=>'Confirm Password*'])}}
+                <small id="emailHelp" class="form-text text-danger  mb-1">Required*</small>
+                {{Form::submit('Sign Up',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
+
+                {!! Form::close() !!}
+                <div class="txt-center mt-5">
+                        <p>Already have an Accout? <a>Sign In</a>
+                 </div>
+
+                 <div class="">
+                    <a href="#" id="launch-vendor-login" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".vendorlogin">
+                            Vendor Login
+                        </a>
+                 </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Vendor Login -->
+    <div id="modal-vendor-login" class="modal fade vendorlogin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-4">
+                     <img class="img-fluid" src="{!!URL::asset('images/signin.jpg')!!}">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="txt-center">
+                        <h3>"Grow Your Business with OWM"</h3>
+                        <h5>Sign In to access your Dasboard</h5>
+                    </div>
+                    <br>
+                      {!! Form::open(['route'=>'vendor.login']) !!}
+                      {{ csrf_field() }}
+                {{Form::email('email',null,['class'=>'form-control mb-1', 'placeholder'=>'Your Email*'])}}
+                {{Form::password('password',['class'=>'form-control mb-1','placeholder'=>'Password*'])}}
+                {{Form::submit('Sign In',['class'=>'submit btn bg1 hov-btn2 form-control cl0'])}}
+
+                {!! Form::close() !!}
+                <div class="txt-center mt-5">
+                        <p>Don't have an account? <a>Sign Up</a>
+                 </div>
+
+                 <div class="">
+                    <a href="#" id="launch-vendor-register" class="btn flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target=".bd-example-modal-lg">
+                            Vendor Sign Up
+                        </a>
+                 </div>
+                 
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
     
     <!-- Header -->
     <!-- Header -->
@@ -58,17 +174,17 @@
                                 <a href="/vendors/all/">Vendors</a>
                                 <ul class="sub-menu">
                                     @foreach($servicesmenu as $servicemenu)
-                                    <li><a href="/vendors/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
+                                    <li><a href="/vendors/all/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="/blog/real-weddings">Real Wedding</a>
+                                <a href="/blog/category/real-wedding">Real Wedding</a>
                             </li>
 
                             <li>
-                                <a href="/blog/destination-wedding">Destination Wedding</a>
+                                <a href="/blog/category/destination-wedding">Destination Wedding</a>
                             </li>
 
                             <li class="label1" data-label1="hot">
@@ -90,25 +206,26 @@
                     </div>  
 
                     <!-- Icon header -->
-                    <div class="wrap-icon-header flex-w flex-r-m">
+                    <div class="wrap-icon-header flex-w flex-r-m h-full">
 
-                    @unless(Auth::guard('vendor')->check() || Auth::guard('customer')->check() )
+                        @unless(Auth::guard('vendor')->check() || Auth::guard('customer')->check() )
                         <div class="flex-c-m h-full p-r-25 bor6">
                             <div class="icon-header-item cl0 trans-04 p-lr-11">
-                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".vendorlogin">Login</a>
+                               <a class="btn mtext-104 cl0 size-101 bg1 hov-btn2 p-lr-10 trans-04" type="button" href="{{route('login.customer')}}">Login</a>
                             </div>
                         </div>
                         @endunless
-                    @if(Auth::check())                           
+
+                        @if(Auth::guard('vendor')->check() || Auth::guard('customer')->check())
                         <div class="flex-c-m h-full p-r-25 bor6">
-                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-22 p-r-11 js-show-cart">
+                            <div class="icon-header-item cl0 hov-cl2 trans-04 p-lr-11 js-show-cart">
                                 <i class="zmdi zmdi-account"></i>
                             </div>
                         </div>
                         @endif
                             
                         <div class="flex-c-m h-full p-lr-19">
-                            <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-22 js-show-sidebar">
+                            <div class="icon-header-item cl0 hov-cl2 trans-04 p-lr-11 ">
                                 <i class="zmdi zmdi-menu"></i>
                             </div>
                         </div>
@@ -129,7 +246,7 @@
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-5">
                     <div class="icon-header-item cl0 trans-04 p-lr-11">
-                        <a class="btn mtext-104 cl0 hov-btn2 size-40 bg1 p-lr-10 trans-04" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
+                        <a href="{{route('login.vendor')}}" class="btn mtext-104 cl0 hov-btn2 size-40 bg1 p-lr-10 trans-04" type="button">Login</a>
                     </div>
                 </div>
             </div>
@@ -166,7 +283,7 @@
                     <a href="/vendors/all">Vendors</a>
                     <ul class="sub-menu-m">
                         @foreach($servicesmenu as $servicemenu)
-                            <li><a href="{{'/vendor/$servicemenu->slug'}}">{{$servicemenu->name}}</a></li>
+                            <li><a href="/vendors/all/{{$servicemenu->slug}}">{{$servicemenu->name}}</a></li>
                         @endforeach
                     </ul>
                     <span class="arrow-main-menu-m">
@@ -175,11 +292,11 @@
                 </li>
 
                 <li>
-                    <a href="/blog/real-weddings">Real Wedding</a>
+                    <a href="/blog/category/real-wedding">Real Wedding</a>
                 </li>
 
                 <li>
-                    <a href="/blog/destination-wedding">Destination Wedding</a>
+                    <a href="/blog/category/destination-wedding">Destination Wedding</a>
                 </li>
 
                 <li>
@@ -237,7 +354,7 @@
                 
                 <div class="w-full">
                     <div class="header-cart-total w-full p-tb-40">
-                        Total: $75.00
+                        Profile
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
@@ -265,7 +382,7 @@
                 
                 <div class="w-full">
                     <div class="header-cart-total w-full p-tb-40">
-                        Total: $75.00
+                        Profile
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
@@ -293,7 +410,7 @@
                 
                 <div class="w-full">
                     <div class="header-cart-total w-full p-tb-40">
-                        Total: $75.00
+                        Profile
                     </div>
 
                     <div class="header-cart-buttons flex-w w-full">
@@ -306,6 +423,7 @@
         </div>
         @endif
     </div>
+
     @yield('content')
 
     <footer class="bg3 p-t-75 p-b-32">
@@ -334,7 +452,7 @@
 
                     <ul>
                         <li class="p-b-10">
-                            <a href="/blog/real-weddings" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="/blog/category/real-wedding" class="stext-107 cl7 hov-cl1 trans-04">
                                 Real Weddings
                             </a>
                         </li>
@@ -359,19 +477,19 @@
                     </h4>
 
                     <p class="stext-107 cl7 size-201">
-                        Any questions? Let us know  at the coffee shop close to your house, just around the corner
+                        Any questions? Let us know  at admin@onlineweddingmart.com
                     </p>
 
                     <div class="p-t-27">
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://facebook.com/o_weddingmart" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-facebook"></i>
                         </a>
 
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://instagram.com/o_weddingmart" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-instagram"></i>
                         </a>
 
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://pinterest.com/o_weddingmart" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-pinterest-p"></i>
                         </a>
                     </div>
@@ -400,23 +518,23 @@
             <div class="p-t-40">
                 <div class="flex-c-m flex-w p-b-18">
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-01.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-02.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-03.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('/images/icons/icon-pay-04.png')}}" alt="ICON-PAY">
                     </a>
 
                     <a href="#" class="m-all-1">
-                        <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+                        <img src="{{URL::asset('images/icons/icon-pay-05.png')}}" alt="ICON-PAY">
                     </a>
                 </div>
 
@@ -437,6 +555,19 @@ Copyright ©<script>document.write(new Date().getFullYear());</script> All right
 <!--===============================================================================================-->
     {!!Html::script('/vendor/select2/select2.min.js')!!}
     {!!Html::script('/js/main.js')!!}
+        <script>
+
+        $('.gallery-lb').each(function() { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled:true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
     @yield('script')
         
 </body>

@@ -5,9 +5,9 @@
 @section('content')
 
 	<!-- Title page -->
-	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-02.jpg');">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url({{asset('images/'.'bg-02.jpg')}});">
 		<h2 class="ltext-105 cl0 txt-center">
-			Blog
+			All Posts
 		</h2>
 	</section>	
 
@@ -22,15 +22,15 @@
 						<!-- item blog -->
 						<div class="p-b-63">
 							<a href="{{route('blog.single', $post->slug)}}" class="hov-img0 how-pos5-parent">
-								<img src="images/blog-04.jpg" alt="IMG-BLOG">
+								<img src="{{asset('images/'.$post->image)}}" alt="IMG-BLOG">
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										22
+									{{date('j',strtotime($post->created_at))}}
 									</span>
 
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										{{date('M Y',strtotime($post->created_at))}}
 									</span>
 								</div>
 							</a>
@@ -54,7 +54,7 @@
 										</span>
 
 										<span>
-											StreetStyle, Fashion, Couple  
+											{{$post->category->name}}  
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
 
@@ -98,41 +98,19 @@
 							</h4>
 
 							<ul>
+								@foreach($blogcategories as $category)
 								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										Fashion
+									<a href="/blog/category/{{$category->slug}}" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+										{{$category->name}}
 									</a>
 								</li>
-
-								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										Beauty
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										Street Style
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										Life Style
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										DIY & Crafts
-									</a>
-								</li>
+								@endforeach
 							</ul>
 						</div>
 
 						<div class="p-t-65">
 							<h4 class="mtext-112 cl2 p-b-33">
-								Featured Products
+								Featured Vendors
 							</h4>
 
 							<ul>

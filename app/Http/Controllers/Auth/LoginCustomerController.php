@@ -39,10 +39,12 @@ class LoginCustomerController extends Controller
 
         if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) 
         {
-            return redirect()->intended(route('customer.dashboard'));
+            //return redirect()->intended(route('customer.dashboard'));
+            return $this->sendLoginResponse($request);
         }
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        //return redirect()->back()->withInput($request->only('email', 'remember'));
+        return $this->sendFailedLoginResponse($request);
     }
 
     public function logout(Request $request)
@@ -52,5 +54,34 @@ class LoginCustomerController extends Controller
         $request->session()->invalidate();
 
         return redirect('/');
+    }
+
+    public function username()
+    {
+        return 'email';
+    }
+
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $errors = [$this->username() => trans('auth.failed')];
+
+        if ($request->expectsJson()) {
+            return response()->json($errors, 422);
+        }
+
+        return redirect()->back()
+            ->withInput($request->only($this->username(), 'remember'))
+            ->withErrors($errors);
+    }
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard('customer')->user())
+                ?: redirect()->intended($this->redirectPath());
     }
 }

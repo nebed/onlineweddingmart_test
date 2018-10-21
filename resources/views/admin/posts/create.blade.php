@@ -61,10 +61,6 @@
 											{{Form::text('title',null,array('class'=>'form-control','required' => 'yes'))}}
 											</div>
 											<div class="form-group">
-											{{Form::label('slug','URL:',['class'=>'form-control-label','for'=>'slug'])}}
-											{{Form::text('slug',null,array('class'=>'form-control','required' => 'yes','min-length'=>'5', 'max-length'=>'70'))}}
-											</div>
-											<div class="form-group">
 									          {{ Form::label('category_id','Category:',['class'=>'form-control-label','for'=>'category_id']) }}
 									          <select class="form-control" name="category_id">
 									            
@@ -75,8 +71,8 @@
 									          </select>
 									      	</div>
 									      	<div class="form-group">
-									          {{ Form::label('featured_image','Upload Featured Image:',['class'=>'form-control-label','for'=>'featured_image']) }}
-									          {{ Form::file('featured_image') }}
+									          {{ Form::label('image','Upload Featured Image (1200x600):',['class'=>'form-control-label','for'=>'image']) }}
+									          {{ Form::file('image') }}
 									        </div>
 									        <div class="form-group">
 	                                        {{Form::label('body','Post Body:')}}

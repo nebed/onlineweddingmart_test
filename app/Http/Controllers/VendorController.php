@@ -148,6 +148,15 @@ class VendorController extends Controller
             $loc[$location->id]=$location->name;
         }
         $vendor = Vendor::findOrFail(auth('vendor')->id());
-        return view('vendors.profile')->withVendor($vendor)->withLocations($loc)->withServices($serv);
+        $countempty = 0;
+        $countall = 0;
+        foreach($vendor->getAttributes() as &$attr){
+            ++$countall;
+            if(is_null($attr)){
+                ++$countempty;
+            }
+        }
+        $completepercent = (1- ($countempty/$countall)) * 100;
+        return view('vendors.profile')->withVendor($vendor)->withLocations($loc)->withServices($serv)->withCompletepercent($completepercent);
     }
 }
